@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f6">
+  <meta name="description" content="資訊管理學系學生的個人自我介紹、技能與專案作品集。">
+  <title>個人履歷｜資訊管理學系學生</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172b35;
+      --muted: #63747b;
+      --accent: #087e78;
+      --accent-dark: #06645f;
+      --accent-soft: #e2f3ef;
+      --paper: #f7f8f6;
+      --white: #fff;
+      --line: #e4e9e6;
+      --shadow: 0 18px 50px rgba(23, 43, 53, .08);
+      --radius: 20px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(1100px, calc(100% - 48px)); margin-inline: auto; }
+
+    .site-header {
+      position: sticky;
+      z-index: 10;
+      top: 0;
+      border-bottom: 1px solid rgba(228, 233, 230, .85);
+      background: rgba(247, 248, 246, .9);
+      backdrop-filter: blur(14px);
+    }
+    .nav-wrap { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 800; letter-spacing: .02em; white-space: nowrap; }
+    .brand-mark {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 16px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 30px; margin: 0; padding: 0; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: 14px; font-weight: 600; transition: color .2s ease; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--accent); }
+    .nav-contact {
+      padding: 9px 16px;
+      border: 1px solid #bddbd5;
+      border-radius: 999px;
+      color: var(--accent-dark) !important;
+      transition: background .2s ease, color .2s ease, border-color .2s ease;
+    }
+    .nav-contact:hover { border-color: var(--accent); background: var(--accent); color: var(--white) !important; }
+    .menu-toggle { display: none; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 12px; background: var(--white); color: var(--ink); cursor: pointer; }
+    .menu-toggle span { display: block; width: 18px; height: 2px; margin: 4px auto; border-radius: 2px; background: currentColor; }
+
+    .hero { position: relative; overflow: hidden; padding: 94px 0 88px; }
+    .hero::before {
+      position: absolute;
+      z-index: -1;
+      top: 22px;
+      right: max(-100px, calc((100vw - 1220px) / 2));
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #dff1eb 0, rgba(223, 241, 235, .2) 68%, transparent 69%);
+      content: "";
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 70px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 18px; color: var(--accent-dark); font-size: 13px; font-weight: 800; letter-spacing: .12em; }
+    .eyebrow::before { width: 22px; height: 2px; background: var(--accent); content: ""; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 660px; margin-bottom: 18px; font-size: clamp(42px, 6vw, 68px); line-height: 1.2; letter-spacing: -.045em; }
+    h1 span { color: var(--accent); }
+    .hero-copy { max-width: 580px; margin-bottom: 30px; color: var(--muted); font-size: 18px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 9px; padding: 0 19px; border: 1px solid transparent; border-radius: 12px; font-size: 14px; font-weight: 700; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--accent); color: var(--white); box-shadow: 0 8px 20px rgba(8, 126, 120, .2); }
+    .button-primary:hover { background: var(--accent-dark); box-shadow: 0 12px 24px rgba(8, 126, 120, .24); }
+    .button-secondary { border-color: var(--line); background: var(--white); color: var(--ink); }
+    .button-secondary:hover { border-color: #b8d6d0; }
+    .hero-card {
+      position: relative;
+      display: flex;
+      min-height: 330px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 34px;
+      border: 1px solid rgba(255, 255, 255, .9);
+      border-radius: 28px;
+      background: linear-gradient(145deg, #e7f4ef, #f4f4eb);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .avatar {
+      display: grid;
+      width: 112px;
+      height: 112px;
+      margin-bottom: 18px;
+      place-items: center;
+      border: 7px solid rgba(255, 255, 255, .75);
+      border-radius: 34px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 32px;
+      font-weight: 800;
+      transform: rotate(-5deg);
+    }
+    .hero-card strong { font-size: 20px; }
+    .hero-card p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+    .floating-note { position: absolute; right: -18px; bottom: 34px; padding: 11px 15px; border: 1px solid var(--line); border-radius: 14px; background: var(--white); box-shadow: 0 10px 30px rgba(23, 43, 53, .1); color: var(--accent-dark); font-size: 13px; font-weight: 700; }
+
+    section { padding: 78px 0; }
+    .section-heading { max-width: 650px; margin-bottom: 38px; }
+    .section-heading .eyebrow { margin-bottom: 11px; }
+    h2 { margin-bottom: 10px; font-size: clamp(30px, 4vw, 42px); line-height: 1.3; letter-spacing: -.03em; }
+    .section-intro { margin-bottom: 0; color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .about-copy { color: var(--muted); }
+    .about-copy strong { color: var(--ink); }
+    .info-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 0; }
+    .info-item { padding: 17px 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--white); }
+    .info-item dt { margin-bottom: 3px; color: var(--muted); font-size: 12px; }
+    .info-item dd { margin: 0; font-size: 14px; font-weight: 700; }
+
+    .soft-section { background: #eef3f0; }
+    .timeline { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .timeline-card { position: relative; padding: 26px; border: 1px solid #e0e8e3; border-radius: var(--radius); background: var(--white); transition: transform .2s ease, box-shadow .2s ease; }
+    .timeline-card:hover, .skill-card:hover, .project-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .timeline-date { display: inline-block; margin-bottom: 13px; padding: 4px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-dark); font-size: 12px; font-weight: 800; }
+    .timeline-card h3, .project-card h3 { margin-bottom: 6px; font-size: 18px; }
+    .timeline-card p, .project-card p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
+    .placeholder { color: #9b6950; }
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .skill-card { padding: 23px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); transition: transform .2s ease, box-shadow .2s ease; }
+    .skill-icon { display: grid; width: 42px; height: 42px; margin-bottom: 17px; place-items: center; border-radius: 13px; background: var(--accent-soft); color: var(--accent-dark); font-size: 19px; font-weight: 800; }
+    .skill-card h3 { margin-bottom: 5px; font-size: 16px; }
+    .skill-card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .skill-note { margin: 18px 0 0; color: var(--muted); font-size: 13px; }
+
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .project-card { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: var(--white); transition: transform .2s ease, box-shadow .2s ease; }
+    .project-visual { display: grid; min-height: 155px; place-items: center; background: linear-gradient(135deg, #deeee9, #f3f1e8); color: var(--accent-dark); font-size: 38px; font-weight: 800; }
+    .project-visual.alt { background: linear-gradient(135deg, #e9e8f3, #f1eee8); color: #655a90; }
+    .project-visual.warm { background: linear-gradient(135deg, #f4e8dc, #f0f2e8); color: #8a6448; }
+    .project-content { padding: 22px; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 15px; }
+    .tag { padding: 4px 9px; border-radius: 999px; background: #f1f4f2; color: var(--muted); font-size: 11px; font-weight: 700; }
+    .contact-section { padding: 72px 0; background: #173b3c; color: var(--white); }
+    .contact-wrap { display: flex; align-items: center; justify-content: space-between; gap: 36px; }
+    .contact-section .eyebrow { color: #9ed9ce; }
+    .contact-section h2 { max-width: 550px; margin-bottom: 10px; }
+    .contact-section p { max-width: 540px; margin-bottom: 0; color: #c4d6d2; }
+    .contact-section .button { flex-shrink: 0; background: var(--white); color: var(--accent-dark); }
+    .contact-section .button:hover { background: var(--accent-soft); }
+    footer { padding: 22px 0; background: #123233; color: #b6cbc6; font-size: 12px; }
+    .footer-wrap { display: flex; justify-content: space-between; gap: 16px; }
+
+    @media (max-width: 820px) {
+      .nav-links { gap: 17px; }
+      .hero-grid { gap: 35px; }
+      .hero { padding: 72px 0; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .project-card:last-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 640px) {
+      .container { width: min(100% - 36px, 500px); }
+      .nav-wrap { min-height: 66px; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 1px);
+        right: 0;
+        left: 0;
+        display: none;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 18px 16px;
+        border-bottom: 1px solid var(--line);
+        background: var(--paper);
+      }
+      .nav-links.is-open { display: flex; flex-direction: column; }
+      .nav-links a { display: block; padding: 11px 4px; }
+      .nav-contact { margin-top: 5px; text-align: center; }
+      .hero { padding: 58px 0 55px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 35px; }
+      .hero-copy { font-size: 16px; }
+      .hero-card { min-height: 270px; }
+      .floating-note { right: 8px; }
+      section { padding: 60px 0; }
+      .about-grid, .timeline { grid-template-columns: 1fr; gap: 22px; }
+      .info-list { gap: 10px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card:last-child { grid-column: auto; }
+      .contact-wrap { align-items: flex-start; flex-direction: column; }
+      .footer-wrap { align-items: flex-start; flex-direction: column; gap: 4px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav-wrap" aria-label="主要導覽">
+      <a class="brand" href="#home" aria-label="返回首頁">
+        <span class="brand-mark" aria-hidden="true">IM</span>
+        <span>個人履歷</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="primary-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="primary-menu">
+        <li><a href="#about">關於我</a></li>
+        <li><a href="#experience">學經歷</a></li>
+        <li><a href="#skills">技能</a></li>
+        <li><a href="#projects">專案作品</a></li>
+        <li><a class="nav-contact" href="#contact">聯絡我</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">INFORMATION MANAGEMENT STUDENT</p>
+          <h1>你好，我是盧綺音<br><span></span></h1>
+          <p class="hero-copy">我是台灣科技大學資訊管理學系的學生，對數位服務、資料應用與解決問題充滿熱情。期待把所學化為實際成果，持續探索更多可能。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">看看我的作品 <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="#contact">與我聯絡</a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="個人簡介">
+          <div class="avatar" aria-hidden="true">【你】</div>
+          <strong>盧綺音</strong>
+          <p>資訊管理學系・碩一</p>
+          <span class="floating-note">保持好奇，持續學習 ✦</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">ABOUT ME</p>
+          <h2>關於我</h2>
+          <p class="section-intro">結合資訊與管理的視角，打造貼近需求的解決方案。</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>你好！我是<strong>盧綺音</strong>，目前就讀於<strong>台灣科技大學資訊管理學系</strong>。在學習過程中，我逐漸培養對資料分析的興趣。</p>
+            <p>我喜歡從理解問題開始，透過團隊合作與持續嘗試，將想法一步步落實。這個網站整理了我的學習歷程與作品，歡迎瀏覽，也期待有機會交流。</p>
+          </div>
+          <dl class="info-list">
+            <div class="info-item"><dt>目前就讀</dt><dd>台灣科技大學資訊管理學系・碩一</dd></div>
+            <div class="info-item"><dt>所在地</dt><dd>台北市</dd></div>
+            <div class="info-item"><dt>關注領域</dt><dd>資料分析、系統開發、數位行銷</dd></div>
+            <div class="info-item"><dt>目前目標</dt><dd>實習、專題研究、職涯規劃</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft-section" id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">EDUCATION & EXPERIENCE</p>
+          <h2>學歷與經歷</h2>
+          <p class="section-intro">記錄一路累積的學習、參與和實作經驗。</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-card">
+            <span class="timeline-date">115年－至今</span>
+            <h3>台灣科技大學</h3>
+            <p>資訊管理學系・碩一<br>修習課程：軟體工程
+            
+          </article>
+          <article class="timeline-card">
+            <span class="timeline-date">113年</span>
+            <h3>國際交流社</h3>
+            <p>副社長</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">SKILLS</p>
+          <h2>技能展示</h2>
+          <p class="section-intro">以下是資訊管理領域常見的技能分類，請依實際熟悉程度修改或替換。</p>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card"><span class="skill-icon" aria-hidden="true">&lt;/&gt;</span><h3>程式與網頁</h3><p>【HTML、CSS、JavaScript 或其他語言】</p></article>
+          <article class="skill-card"><span class="skill-icon" aria-hidden="true">▦</span><h3>資料與分析</h3><p>【Excel、SQL、Python 或資料視覺化工具】</p></article>
+          <article class="skill-card"><span class="skill-icon" aria-hidden="true">✎</span><h3>設計與企劃</h3><p>【Figma、簡報製作、需求分析或 UX】</p></article>
+          <article class="skill-card"><span class="skill-icon" aria-hidden="true">◎</span><h3>語言與協作</h3><p>【語言能力、團隊合作或溝通經驗】</p></article>
+        </div>
+        <p class="skill-note">提示：請只保留你實際接觸或具備的技能，並可補充熟悉程度或相關成果。</p>
+      </div>
+    </section>
+
+    <section class="soft-section" id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">SELECTED WORK</p>
+          <h2>專案作品</h2>
+          <p class="section-intro">用作品呈現想法、過程與解決問題的方式。</p>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-visual" aria-hidden="true">01</div>
+            <div class="project-content"><h3>軟體工程</h3><p>Github研究</p><div class="tag-list"><span class="tag">製作</span><span class="tag">【課程／個人】</span></div></div>
+          </article>
+    
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container contact-wrap">
+        <div>
+          <p class="eyebrow">GET IN TOUCH</p>
+          <h2>一起交流，讓好點子開始發生。</h2>
+          <p>無論是實習機會、專案合作，或單純想交流想法，都歡迎透過 Email 與我聯絡。</p>
+        </div>
+        <a class="button" href="mailto:【你的Email】">【你的Email】 <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <span>© <span id="current-year"></span> 盧綺音・個人履歷</span>
+      <span>以好奇心探索，用行動持續成長。</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const menu = document.querySelector("#primary-menu");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = menu.classList.toggle("is-open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "關閉導覽選單" : "開啟導覽選單");
+    });
+
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menu.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "開啟導覽選單");
+      });
+    });
+
+    document.querySelector("#current-year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
